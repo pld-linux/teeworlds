@@ -1,0 +1,9 @@
+[Desktop Entry]
+Name=Teewars
+Comment=Teewars
+Exec=teewars.sh
+Icon=teewars.png
+Terminal=false
+Type=Application
+Categories=Game;ArcadeGame;
+Encoding=UTF-8
