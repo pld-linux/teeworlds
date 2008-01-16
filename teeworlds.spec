@@ -31,8 +31,7 @@ Takie fajne robaczki z gnatami. Czyli:
 Gra sieciowa typu CTF,DM.
 
 %prep
-%setup -q -n %{name}-%{version}-src
-unzip %{SOURCE1}
+%setup -q -a1 -n %{name}-%{version}-src
 %patch0 -p0 
 
 %build
