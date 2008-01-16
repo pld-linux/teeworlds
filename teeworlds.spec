@@ -1,8 +1,11 @@
+#
+# TODO:
+# - add BRs,R
 Name:		teewars
-Summary:	3D billard simulation using OpenGL
-Summary(pl.UTF-8):	Symulacja bilarda używająca OpenGL
+Summary:	Cute little buggers with guns.
+Summary(pl.UTF-8):	Takie fajne robaczki z gnatami.
 Version:	0.3.3
-Release:	0.1
+Release:	0.2
 Group:		X11/Applications/Games
 License:	GPL
 Source0:	http://www.teewars.com/files/%{name}-%{version}-src.tar.gz
@@ -20,10 +23,12 @@ BuildRequires:	sed >= 4.0
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
 %description
-3D billard simulation using OpenGL.
+Cute little buggers with guns.
+CTF,DM network game.
 
 %description -l pl.UTF-8
-Trójwymiarowa symulacja bilarda używająca OpenGL.
+Takie fajne robaczki z gnatami. Czyli:
+Gra sieciowa typu CTF,DM.
 
 %prep
 %setup -q -n %{name}-%{version}-src
@@ -53,6 +58,7 @@ rm -rf $RPM_BUILD_ROOT
 %defattr(644,root,root,755)
 %doc readme.txt license.txt
 %attr(755,root,root) %{_bindir}/teewars.sh
+%attr(755,root,root) %{_datadir}/%{name}/teewars*
 %{_datadir}/%{name}
 %{_pixmapsdir}/*.png
 %{_desktopdir}/*.desktop
