@@ -19,7 +19,6 @@ Patch0:		%{name}-sh.patch
 URL:		http://www.teewars.com/
 BuildRequires:	python
 BuildRequires:	unzip
-BuildRequires:	sed >= 4.0
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
 %description
