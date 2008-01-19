@@ -7,7 +7,7 @@ Summary(pl.UTF-8):	Takie fajne robaczki z gnatami.
 Version:	0.3.3
 Release:	0.2
 Group:		X11/Applications/Games
-License:	Please read license.txt
+License:	distributable
 Source0:	http://www.teewars.com/files/%{name}-%{version}-src.tar.gz
 # Source0-md5:	6f7ba385ab4cc7944802e5010c17a204
 Source1:	http://www.teewars.com/files/beta/bam.zip
