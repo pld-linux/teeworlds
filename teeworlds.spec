@@ -1,24 +1,26 @@
 #
-# TODO:
-# - add BRs,R
 Name:		teewars
 Summary:	Cute little buggers with guns.
 Summary(pl.UTF-8):	Takie fajne robaczki z gnatami.
-Version:	0.3.3
-Release:	0.2
+Version:	0.3.4
+Release:	1
 Group:		X11/Applications/Games
 License:	distributable
 Source0:	http://www.teewars.com/files/%{name}-%{version}-src.tar.gz
-# Source0-md5:	6f7ba385ab4cc7944802e5010c17a204
+# Source0-md5:	28a02caf6bf58344e4189d130d96349c
 Source1:	http://www.teewars.com/files/beta/bam.zip
-# Source1-md5:	2bd60d6790a2f92ba10e0a384e4c94b6
+# Source1-md5:	91065fcce9296b7259d71ef6aafe347a
 Source2:	%{name}.png
 Source3:	%{name}.desktop
 #Source4:	%{name}_srv.desktop
 Patch0:		%{name}-sh.patch
 URL:		http://www.teewars.com/
+BuildRequires:	alsa-lib-devel
+BuildRequires:	OpenGL-devel
+BuildRequires:	OpenGL-GLU-devel
 BuildRequires:	python
 BuildRequires:	unzip
+BuildRequires:	xorg-lib-libX11-devel
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
 %description
