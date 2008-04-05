@@ -1,8 +1,11 @@
 [Desktop Entry]
 Name=Teeworlds
-Comment=Teeworlds
-Exec=teeworlds.sh
-Icon=teeworlds.png
+GenericName=Cute little buggers with guns
+GenericName[pl]=Takie fajne robaczki z gnatami
+Comment=CTF, DM network game
+Comment[pl]=Gra sieciowa typu CTF, DM
+Exec=teeworlds
+Icon=teeworlds
 Terminal=false
 Type=Application
 Categories=Game;ArcadeGame;
