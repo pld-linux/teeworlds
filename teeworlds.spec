@@ -1,26 +1,29 @@
 #
-Name:		teewars
+# TODO:
+# rename to teeworlds.spec on CVS
+Name:		teeworlds
 Summary:	Cute little buggers with guns.
 Summary(pl.UTF-8):	Takie fajne robaczki z gnatami.
-Version:	0.3.4
+Version:	0.4.1
 Release:	1
 Group:		X11/Applications/Games
 License:	distributable
-Source0:	http://www.teewars.com/files/%{name}-%{version}-src.tar.gz
-# Source0-md5:	28a02caf6bf58344e4189d130d96349c
-Source1:	http://www.teewars.com/files/beta/bam.zip
-# Source1-md5:	91065fcce9296b7259d71ef6aafe347a
-Source2:	%{name}.png
-Source3:	%{name}.desktop
+Source0:	http://www.teeworlds.com/files/%{name}-%{version}-src.tar.gz
+# Source0-md5:	d2977b5f46a83043b6e748999de7d5b8
+Source1:	http://www.teeworlds.com/files/beta/bam.zip
+# Source1-md5:	dd1937ce711927299a1b09edffa319ca
+Source2:	teewars.png
+Source3:	teewars.desktop
 #Source4:	%{name}_srv.desktop
-Patch0:		%{name}-sh.patch
-URL:		http://www.teewars.com/
+Source4:	teewars.sh
+URL:		http://www.teeworlds.com/
 BuildRequires:	alsa-lib-devel
 BuildRequires:	OpenGL-devel
 BuildRequires:	OpenGL-GLU-devel
 BuildRequires:	python
 BuildRequires:	unzip
 BuildRequires:	xorg-lib-libX11-devel
+Obsoletes:	teewars
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
 %description
@@ -33,7 +36,7 @@ Gra sieciowa typu CTF,DM.
 
 %prep
 %setup -q -a1 -n %{name}-%{version}-src
-%patch0 -p0 
+#%patch0 -p0
 
 %build
 cd bam
@@ -47,8 +50,8 @@ install -d $RPM_BUILD_ROOT{%{_bindir},%{_desktopdir},%{_pixmapsdir},%{_datadir}/
 
 install %{SOURCE2} $RPM_BUILD_ROOT%{_pixmapsdir}
 install %{SOURCE3} $RPM_BUILD_ROOT%{_desktopdir}
-install teewars.sh $RPM_BUILD_ROOT%{_bindir}
-install teewars teewars_srv $RPM_BUILD_ROOT%{_datadir}/%{name}/
+install %{SOURCE4} $RPM_BUILD_ROOT%{_bindir}
+install %{name} %{name}_srv $RPM_BUILD_ROOT%{_datadir}/%{name}/
 cp -rf data $RPM_BUILD_ROOT%{_datadir}/%{name}/
 
 %clean
@@ -57,8 +60,8 @@ rm -rf $RPM_BUILD_ROOT
 %files
 %defattr(644,root,root,755)
 %doc readme.txt license.txt
-%attr(755,root,root) %{_bindir}/teewars.sh
-%attr(755,root,root) %{_datadir}/%{name}/teewars*
+%attr(755,root,root) %{_bindir}/%{name}.sh
+%attr(755,root,root) %{_datadir}/%{name}/%{name}*
 %{_datadir}/%{name}
 %{_pixmapsdir}/*.png
 %{_desktopdir}/*.desktop
