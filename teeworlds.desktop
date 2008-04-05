@@ -1,8 +1,8 @@
 [Desktop Entry]
-Name=Teewars
-Comment=Teewars
-Exec=teewars.sh
-Icon=teewars.png
+Name=Teeworlds
+Comment=Teeworlds
+Exec=teeworlds.sh
+Icon=teeworlds.png
 Terminal=false
 Type=Application
 Categories=Game;ArcadeGame;
