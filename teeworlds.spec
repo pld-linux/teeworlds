@@ -48,9 +48,9 @@ bam/src/bam release
 rm -rf $RPM_BUILD_ROOT
 install -d $RPM_BUILD_ROOT{%{_bindir},%{_desktopdir},%{_pixmapsdir},%{_datadir}/%{name}/data}
 
-install %{SOURCE2} $RPM_BUILD_ROOT%{_pixmapsdir}
-install %{SOURCE3} $RPM_BUILD_ROOT%{_desktopdir}
-install %{SOURCE4} $RPM_BUILD_ROOT%{_bindir}
+install %{SOURCE2} $RPM_BUILD_ROOT%{_pixmapsdir}/%{name}.png
+install %{SOURCE3} $RPM_BUILD_ROOT%{_desktopdir}/%{name}.desktop
+install %{SOURCE4} $RPM_BUILD_ROOT%{_bindir}/%{name}.sh
 install %{name} %{name}_srv $RPM_BUILD_ROOT%{_datadir}/%{name}/
 cp -rf data $RPM_BUILD_ROOT%{_datadir}/%{name}/
 
