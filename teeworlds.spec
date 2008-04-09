@@ -1,6 +1,5 @@
 #
 # TODO:
-# - rename to teeworlds.spec on CVS
 # - exclude bam to separate spec file and BR it
 Summary:	Cute little buggers with guns
 Summary(pl.UTF-8):	Takie fajne robaczki z gnatami.
@@ -13,8 +12,8 @@ Source0:	http://www.teeworlds.com/files/%{name}-%{version}-src.tar.gz
 # Source0-md5:	97f1833ea94015b472a0f828003693b8
 Source1:	http://www.teeworlds.com/files/beta/bam.zip
 # Source1-md5:	dd1937ce711927299a1b09edffa319ca
-Source2:	teewars.png
-Source3:	teewars.desktop
+Source2:	%{name}.png
+Source3:	%{name}.desktop
 #Source4:	%{name}_srv.desktop
 URL:		http://www.teeworlds.com/
 BuildRequires:	OpenGL-GLU-devel
@@ -23,7 +22,8 @@ BuildRequires:	alsa-lib-devel
 BuildRequires:	python
 BuildRequires:	unzip
 BuildRequires:	xorg-lib-libX11-devel
-Obsoletes:	teewars
+Obsoletes:	teewars <= 0.3.4
+Provides:	teewars = %{version}
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
 %description
