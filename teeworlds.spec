@@ -1,8 +1,9 @@
 #
 # TODO:
+# - optflags
 # - exclude bam to separate spec file and BR it
 Summary:	Cute little buggers with guns
-Summary(pl.UTF-8):	Takie fajne robaczki z gnatami.
+Summary(pl.UTF-8):	Takie fajne robaczki z gnatami
 Name:		teeworlds
 Version:	0.4.2
 Release:	1
@@ -20,6 +21,7 @@ BuildRequires:	OpenGL-GLU-devel
 BuildRequires:	OpenGL-devel
 BuildRequires:	alsa-lib-devel
 BuildRequires:	python
+BuildRequires:	sed >= 4.0
 BuildRequires:	unzip
 BuildRequires:	xorg-lib-libX11-devel
 Obsoletes:	teewars <= 0.3.4
@@ -56,7 +58,7 @@ install -d $RPM_BUILD_ROOT{%{_bindir},%{_desktopdir},%{_pixmapsdir},%{_datadir}/
 install %{SOURCE2} $RPM_BUILD_ROOT%{_pixmapsdir}/%{name}.png
 install %{SOURCE3} $RPM_BUILD_ROOT%{_desktopdir}/%{name}.desktop
 install %{name} %{name}_srv $RPM_BUILD_ROOT%{_bindir}
-cp -rf data $RPM_BUILD_ROOT%{_datadir}/%{name}/
+cp -rf data $RPM_BUILD_ROOT%{_datadir}/%{name}
 
 %clean
 rm -rf $RPM_BUILD_ROOT
