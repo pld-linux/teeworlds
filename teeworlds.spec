@@ -5,13 +5,13 @@
 Summary:	Cute little buggers with guns
 Summary(pl.UTF-8):	Takie fajne robaczki z gnatami
 Name:		teeworlds
-Version:	0.4.2
+Version:	0.4.3
 Release:	1
 License:	distributable
 Group:		X11/Applications/Games
 Source0:	http://www.teeworlds.com/files/%{name}-%{version}-src.tar.gz
-# Source0-md5:	97f1833ea94015b472a0f828003693b8
-Source1:	http://www.teeworlds.com/files/beta/bam.zip
+# Source0-md5:	a31a8cbd1af3f71a462122166e5872d6
+Source1:	http://www.teeworlds.com/files/bam.zip
 # Source1-md5:	dd1937ce711927299a1b09edffa319ca
 Source2:	%{name}.png
 Source3:	%{name}.desktop
@@ -24,8 +24,8 @@ BuildRequires:	python
 BuildRequires:	sed >= 4.0
 BuildRequires:	unzip
 BuildRequires:	xorg-lib-libX11-devel
-Obsoletes:	teewars <= 0.3.4
 Provides:	teewars = %{version}
+Obsoletes:	teewars <= 0.3.4
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
 %description
@@ -39,8 +39,8 @@ Takie fajne robaczki z gnatami. Gra sieciowa typu CTF, DM.
 # Workaround for no possibility to pass location of data files
 %{__sed} -i 's|"data/|"%{_datadir}/%{name}/data/|g' \
 	datasrc/data.ds \
-	src/game/client/{gc_map_image.cpp,gc_hooks.cpp,gc_skin.cpp} \
-	src/game/editor/ed_editor.cpp \
+	src/game/client/gc_{map_image,hooks,skin}.cpp \
+	src/game/editor/ed_{editor,io}.cpp \
 	src/engine/e_map.c \
 	src/engine/client/ec_client.c \
 	src/engine/server/es_server.c
