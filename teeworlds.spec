@@ -1,25 +1,23 @@
 #
 # TODO:
 # - optflags
-# - exclude bam to separate spec file and BR it
 Summary:	Cute little buggers with guns
 Summary(pl.UTF-8):	Takie fajne robaczki z gnatami
 Name:		teeworlds
-Version:	0.4.3
-Release:	1
+Version:	0.5.0
+Release:	0.1
 License:	distributable
 Group:		X11/Applications/Games
 Source0:	http://www.teeworlds.com/files/%{name}-%{version}-src.tar.gz
-# Source0-md5:	a31a8cbd1af3f71a462122166e5872d6
-Source1:	http://www.teeworlds.com/files/bam.zip
-# Source1-md5:	dd1937ce711927299a1b09edffa319ca
-Source2:	%{name}.png
-Source3:	%{name}.desktop
-#Source4:	%{name}_srv.desktop
+# Source0-md5:	39d7b5d41c2c7250201214a4ab6844ed
+Source1:	%{name}.png
+Source2:	%{name}.desktop
+#Source3:	%{name}_srv.desktop
 URL:		http://www.teeworlds.com/
 BuildRequires:	OpenGL-GLU-devel
 BuildRequires:	OpenGL-devel
 BuildRequires:	alsa-lib-devel
+BuildRequires:	bam
 BuildRequires:	python
 BuildRequires:	sed >= 4.0
 BuildRequires:	unzip
@@ -35,30 +33,19 @@ Cute little buggers with guns. CTF, DM network game.
 Takie fajne robaczki z gnatami. Gra sieciowa typu CTF, DM.
 
 %prep
-%setup -q -a1 -n %{name}-%{version}-src
-# Workaround for no possibility to pass location of data files
-%{__sed} -i 's|"data/|"%{_datadir}/%{name}/data/|g' \
-	datasrc/data.ds \
-	src/game/client/gc_{map_image,hooks,skin}.cpp \
-	src/game/editor/ed_{editor,io}.cpp \
-	src/engine/e_map.c \
-	src/engine/client/ec_client.c \
-	src/engine/server/es_server.c
+%setup -q -n %{name}-%{version}-src
 
 %build
-cd bam
-./make_unix.sh
-cd ..
-bam/src/bam release
+bam release
 
 %install
 rm -rf $RPM_BUILD_ROOT
-install -d $RPM_BUILD_ROOT{%{_bindir},%{_desktopdir},%{_pixmapsdir},%{_datadir}/%{name}/data}
+install -d $RPM_BUILD_ROOT{%{_bindir},%{_desktopdir},%{_pixmapsdir},%{_datadir}/%{name}}
 
-install %{SOURCE2} $RPM_BUILD_ROOT%{_pixmapsdir}/%{name}.png
-install %{SOURCE3} $RPM_BUILD_ROOT%{_desktopdir}/%{name}.desktop
+install %{SOURCE1} $RPM_BUILD_ROOT%{_pixmapsdir}/%{name}.png
+install %{SOURCE2} $RPM_BUILD_ROOT%{_desktopdir}/%{name}.desktop
 install %{name} %{name}_srv $RPM_BUILD_ROOT%{_bindir}
-cp -rf data $RPM_BUILD_ROOT%{_datadir}/%{name}
+cp -rf data/* $RPM_BUILD_ROOT%{_datadir}/%{name}
 
 %clean
 rm -rf $RPM_BUILD_ROOT
