@@ -16,13 +16,14 @@ Source2:	%{name}.desktop
 URL:		http://www.teeworlds.com/
 BuildRequires:	OpenGL-GLU-devel
 BuildRequires:	OpenGL-devel
+BuildRequires:	SDL-devel
 BuildRequires:	alsa-lib-devel
 BuildRequires:	bam
 BuildRequires:	python
 BuildRequires:	python-modules
 BuildRequires:	sed >= 4.0
-BuildRequires:	unzip
 BuildRequires:	xorg-lib-libX11-devel
+BuildRequires:	zlib-devel
 Provides:	teewars = %{version}
 Obsoletes:	teewars <= 0.3.4
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
@@ -35,9 +36,18 @@ Takie fajne robaczki z gnatami. Gra sieciowa typu CTF, DM.
 
 %prep
 %setup -q -n %{name}-%{version}-src
+sed -i '/release_settings.cc.optimize = 1/a\Import("pld_config.bam")' default.bam
 
 %build
-bam release
+cat <<'EOF' > pld_config.bam
+	release_settings.cc.flags:Add("%{rpmcxxflags}")
+	release_settings.cc.c_compiler = "%{__cc}"
+	release_settings.cc.cxx_compiler = "%{__cxx}"
+	release_settings.link.linker = "%{__cxx}"
+	release_settings.link.inputflags = "%{rpmcxxflags} %{rpmldflags}"
+EOF
+
+bam -v release
 
 %install
 rm -rf $RPM_BUILD_ROOT
