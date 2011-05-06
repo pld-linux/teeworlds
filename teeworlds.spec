@@ -4,12 +4,12 @@
 Summary:	Cute little buggers with guns
 Summary(pl.UTF-8):	Takie fajne robaczki z gnatami
 Name:		teeworlds
-Version:	0.5.2
+Version:	0.6.0
 Release:	1
 License:	distributable
 Group:		X11/Applications/Games
 Source0:	http://www.teeworlds.com/files/%{name}-%{version}-src.tar.gz
-# Source0-md5:	f605f6df9f1714dcda4cba1d281cc757
+# Source0-md5:	4d6e5d0fb1b5f0bdf6c5c49714045ef1
 Source1:	%{name}.png
 Source2:	%{name}.desktop
 #Source3:	%{name}_srv.desktop
@@ -18,7 +18,7 @@ BuildRequires:	OpenGL-GLU-devel
 BuildRequires:	OpenGL-devel
 BuildRequires:	SDL-devel
 BuildRequires:	alsa-lib-devel
-BuildRequires:	bam
+BuildRequires:	bam >= 0.4.0
 BuildRequires:	python
 BuildRequires:	python-modules
 BuildRequires:	sed >= 4.0
@@ -35,8 +35,8 @@ Cute little buggers with guns. CTF, DM network game.
 Takie fajne robaczki z gnatami. Gra sieciowa typu CTF, DM.
 
 %prep
-%setup -q -n %{name}-%{version}-src
-sed -i '/release_settings.cc.optimize = 1/a\Import("pld_config.bam")' default.bam
+%setup -q -n %{name}-%{version}-source
+sed -i '/release_settings.cc.optimize = 1/a\Import("pld_config.bam")' bam.lua
 
 %build
 cat <<'EOF' > pld_config.bam
