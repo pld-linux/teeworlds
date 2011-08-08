@@ -1,11 +1,13 @@
 #
 # TODO:
 # - optflags
+# - needs test
+#
 Summary:	Cute little buggers with guns
 Summary(pl.UTF-8):	Takie fajne robaczki z gnatami
 Name:		teeworlds
 Version:	0.6.1
-Release:	1
+Release:	0.1
 License:	distributable
 Group:		X11/Applications/Games
 Source0:	http://www.teeworlds.com/files/%{name}-%{version}-source.tar.gz
