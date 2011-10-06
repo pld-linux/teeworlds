@@ -1,5 +1,6 @@
 #
 # TODO:
+# - MAKE IT WORK; game isn't aware files are in /usr/share/teeworlds
 # - optflags
 # - needs test
 #
